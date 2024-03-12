@@ -36,7 +36,7 @@ import java.util.Properties;
 public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
     private ApplicationContext applicationContext;
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(ApplicationContext applicationContext){
         this.applicationContext = applicationContext;
     }
     //JPA
