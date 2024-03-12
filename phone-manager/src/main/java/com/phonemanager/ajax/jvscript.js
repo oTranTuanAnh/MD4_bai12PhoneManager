@@ -45,6 +45,10 @@ function successHandler() {
             }
             content += "</table>"
             document.getElementById('smartphoneList').innerHTML = content;
+            document.getElementById('smartphoneList').style.display = "block";
+            document.getElementById('add-smartphone').style.display = "none";
+            document.getElementById('display-create').style.display = "block";
+            document.getElementById('title').style.display = "block";
         }
     });
 }
@@ -55,4 +59,20 @@ function getSmartphone(smartphone) {
                 <td >${smartphone.price}</td>` +
         `<td class="btn"><button class="deleteSmartphone" onclick="deleteSmartphone(${smartphone.id})">Delete</button></td>
             </tr>`;
+}
+
+function displayFormCreate() {
+    document.getElementById('smartphoneList').style.display = "none";
+    document.getElementById('add-smartphone').style.display = "block";
+    document.getElementById('display-create').style.display = "none";
+    document.getElementById('title').style.display = "none";
+}
+function deleteSmartphone(id) {
+    $.ajax({
+        type: "DELETE",
+        //tên API
+        url: `http://localhost:8080/api/smartphones/${id}`,
+        //xử lý khi thành công
+        success: successHandler
+    });
 }
